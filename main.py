@@ -19,15 +19,18 @@ for t in temperatures:
         all_temp.append(t)
         all_waves.append(w)
         all_irr.append(my_star.spectral_power_at(w * u.nanometer).value)
-        all_cross.append(molecule.cross_section(w * 10))
+        all_cross.append(molecule.cross_section(w * u.nanometer)[0].to(u.meter * u.meter).value)
         all_colors.append(my_star.rgb_color.astype(float) / 255)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
 
-ax.plot_trisurf(all_temp, all_waves, all_irr)
+for c in all_cross:
+    print(c)
+
+ax.plot_trisurf(all_temp, all_waves, all_cross)
 #ax.scatter(all_temp, all_waves, all_cross)
 ax.set_xlabel("Temperature")
 ax.set_ylabel("Wavelength (nm)")
-ax.set_zlabel("Irradiance")
+ax.set_zlabel("Cross Section")
 plt.show()
