@@ -1,10 +1,18 @@
 from star import star
+from planet import planet
 import numpy as np
 from Libs import rayleigh
 import matplotlib.pyplot as plt
 import astropy.units as u
 
-all_waves = []
+my_star = star(1,5778)
+my_planet = planet(1,1)
+
+my_star.display()
+my_planet.display()
+
+
+"""all_waves = []
 all_irr = []
 all_cross = []
 all_temp = []
@@ -33,4 +41,4 @@ ax.plot_trisurf(all_temp, all_waves, all_cross)
 ax.set_xlabel("Temperature")
 ax.set_ylabel("Wavelength (nm)")
 ax.set_zlabel("Cross Section")
-plt.show()
+plt.show()"""
