@@ -5,7 +5,7 @@ from Libs import rayleigh
 import matplotlib.pyplot as plt
 import astropy.units as u
 
-my_star = star(1,5778)
+my_star = star(1,1)
 my_planet = planet(1,1)
 
 my_star.display()
