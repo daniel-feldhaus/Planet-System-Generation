@@ -29,6 +29,6 @@ if __name__ == "__main__":
     waves = np.linspace(3000,5000,100)
 
     for i in molecules:
-        print("{} {:.3e} cm2".format( i.name, i.cross_section(waves)[0] ))
+        print("{} {:.3e} cm2".format( i.name, i.c ross_section(waves)[0] ))
     
 """
