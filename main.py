@@ -1,17 +1,16 @@
 from star import star
 from planet import planet
+from star_system import star_system
 import numpy as np
 from Libs import rayleigh
 import matplotlib.pyplot as plt
 import astropy.units as u
 
-my_star = star(1,1)
-my_planet = planet(1,1)
 
-my_star.display()
-my_planet.display()
+my_system = star_system(star(1,1))
+my_system.add_planet(planet(1,1,eccentricity=0.2))
 
-
+my_system.display()
 """all_waves = []
 all_irr = []
 all_cross = []
