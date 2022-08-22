@@ -6,9 +6,8 @@ from astropy import constants as const
 from color_index import get_rgb
 from math import e, sqrt
 import numpy as np
+import units
 
-u_solSurfTemp = u.def_unit("solSurfaceTemp",5778 * u.K)
-u_irradiance = u.def_unit("j / sm2", u.si.J / (u.s * u.meter**2))
 def temp_to_CI(temp):
     temp_k = temp.to(u.K).value
     return (1/92) * (-111 + sqrt(2401 + (211600000000/temp_k**2)) + (460000/temp_k))
@@ -18,7 +17,7 @@ class star:
     #Luminosity in sol lumiosities, surface_temp in Kelvin.
     def __init__(self, luminosity = 1, surface_temp = 1):
         self.LUMINOSITY = luminosity * u.astrophys.solLum
-        self.SURFACE_TEMP = surface_temp * u_solSurfTemp
+        self.SURFACE_TEMP = surface_temp * units.u_solSurfTemp
 
 
         
@@ -53,4 +52,4 @@ class star:
     def spectral_power_at(self, wavelength): 
         A = (2 * pi * const.c ** 2 * const.h) / (wavelength ** 5)
         B = 1 / (e ** (const.h * const.c / (wavelength * const.k_B * self.surface_temp().to(u.K))) - 1)
-        return (A * B).value * u_irradiance
+        return (A * B).value * units.u_irradiance
